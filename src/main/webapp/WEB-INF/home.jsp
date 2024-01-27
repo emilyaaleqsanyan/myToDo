@@ -7,21 +7,24 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
+<head >
+    <script src="/main.js"></script>
     <title>Home Page</title>
+
+
 </head>
-<body>
+<body style="background: #4070f4">
 
-
+<div style="margin-top: 10px; margin-left: 8px">
 <% if (session.getAttribute("user") != null){
     User user = (User) session.getAttribute("user");
 %>
-Welcome <%=user.getName() + " " + user.getSurname()%> !!! <a href="/logout">Logout</a>
+ Welcome <%=user.getName() + " " + user.getSurname()%>  !!! <a href="/logout">Logout</a><br>
 <%}
 %>
-<div style="margin: 0 auto">
+<div >
     <a href="/toDos">View All toDo</a>
 </div>
-
+</div>
 </body>
 </html>

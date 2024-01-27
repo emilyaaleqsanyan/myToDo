@@ -10,6 +10,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+
+    <link rel="stylesheet" href=" https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
     <title>ToDo</title>
 </head>
 <body>
@@ -20,13 +23,14 @@
 
 %>
 
-todos |  <a href="/addToDo">Add ToDo</a>
+todos    |     <a href="/addToDo">Add ToDo</a>
 
 
-<table border="1">
+<table id="todosTable">
+    <thead>
 
-    <tr>
-        <th>ID</th>
+    <tr style="background: cornflowerblue">
+        <th >ID</th>
         <th>TITLE</th>
         <th>CREATED DATE</th>
         <th>FINISH DATE</th>
@@ -35,11 +39,12 @@ todos |  <a href="/addToDo">Add ToDo</a>
         <th>DELETE</th>
 
     </tr>
+    </thead>
 
     <%
         if(!toDos.isEmpty()){
             for (ToDo toDo : toDos) {%>
-
+<tbody>
     <tr>
         <td><%=toDo.getId()%></td>
         <td><a href="/singleToDo?id=<%=toDo.getId()%>"><%=toDo.getTitle()%></a></td>
@@ -52,9 +57,16 @@ todos |  <a href="/addToDo">Add ToDo</a>
 
 
     </tr>
+</tbody>
     <%}
     %>
 </table>
 <%}%>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script>
+    new DataTable('#todosTable');
+</script>
 </body>
 </html>
